@@ -22,7 +22,7 @@ jobs :
         npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
       shell : powershell
     - name : Install modules
-      run : npm add wdeasync@delta w.process.tree.windows@delta bufferfromfile@delta 
+      run : npm add wdeasync@gamma w.process.tree.windows@gamma bufferfromfile@gamma 
       shell : powershell
 
   Separate :
@@ -43,11 +43,11 @@ jobs :
         npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
       shell : powershell
     - name : Install module wdeasync
-      run : npm add wdeasync@delta 
+      run : npm add wdeasync@gamma 
       shell : powershell
     - name : Install module w.process.tree.windows
-      run : npm add w.process.tree.windows@delta 
+      run : npm add w.process.tree.windows@gamma 
       shell : powershell
     - name : Install module bufferfromfile
-      run : npm add bufferfromfile@delta 
+      run : npm add bufferfromfile@gamma 
       shell : powershell
