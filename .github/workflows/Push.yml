@@ -1,0 +1,45 @@
+
+name : push
+on : [ push ]
+
+jobs :
+
+  Together :
+    runs-on : windows-latest
+    steps :
+    - uses : actions/checkout@v2
+    - name : ${{ matrix.node-version }}
+      uses : actions/setup-node@v1
+      with :
+        node-version : 16.x
+    - name : Update node-gyp
+      run : |
+        npm install --global node-gyp@latest
+        npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
+      shell : powershell
+    - name : Install modules
+      run : npm add wdeasync@delta w.process.tree.windows@delta bufferfromfile@delta 
+      shell : powershell
+
+  Separate :
+    runs-on : windows-latest
+    steps :
+    - uses : actions/checkout@v2
+    - name : ${{ matrix.node-version }}
+      uses : actions/setup-node@v1
+      with :
+        node-version : 16.x
+    - name : Update node-gyp
+      run : |
+        npm install --global node-gyp@latest
+        npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
+      shell : powershell
+    - name : Install module wdeasync
+      run : npm add wdeasync@delta 
+      shell : powershell
+    - name : Install module w.process.tree.windows
+      run : npm add w.process.tree.windows@delta 
+      shell : powershell
+    - name : Install module bufferfromfile
+      run : npm add bufferfromfile@delta 
+      shell : powershell
