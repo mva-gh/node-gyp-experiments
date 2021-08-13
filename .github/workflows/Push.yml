@@ -8,7 +8,7 @@ jobs :
     strategy :
       fail-fast : false
       matrix :
-        node-version : [ 15.x, 16.x ]
+        node-version : [ 16.x ]
     runs-on : windows-latest
     steps :
     - uses : actions/checkout@v2
@@ -22,6 +22,8 @@ jobs :
         npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
         npm add wdeasync@delta w.process.tree.windows@delta bufferfromfile@delta 
       shell : powershell
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
 
   Separate :
     strategy :
