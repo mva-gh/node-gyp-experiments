@@ -22,7 +22,7 @@ jobs :
       run : |
         npm install --global node-gyp@latest
         npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
-        npm add wdeasync@0.1.93 w.process.tree.windows@delta bufferfromfile@delta 
+        npm add wdeasync@delta w.process.tree.windows@delta bufferfromfile@delta --build-from-source=wdeasync
       shell : powershell
   
 
