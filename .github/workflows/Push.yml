@@ -16,14 +16,15 @@ jobs :
       uses : actions/setup-node@v1
       with :
         node-version : ${{ matrix.node-version }}
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - name : Update node-gyp
       run : |
         npm install --global node-gyp@latest
         npm prefix -g | % {npm config set node_gyp "$_\node_modules\node-gyp\bin\node-gypjs"}
         npm add wdeasync@delta w.process.tree.windows@delta bufferfromfile@delta 
       shell : powershell
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
+  
 
   Separate :
     strategy :
